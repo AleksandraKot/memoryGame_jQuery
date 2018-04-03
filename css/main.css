@@ -10,6 +10,11 @@ html {
   font-size: 12px;
 }
 
+body {
+  font-size: 1rem;
+  min-width: 100%;
+}
+
 .game-wrapper {
   width: 80%;
   height: 80vh;
@@ -38,16 +43,66 @@ html {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  font-size: 3vw;
+  font-size: 3vmax;
   font-weight: 300;
   color: #039db4;
   text-transform: uppercase;
+  letter-spacing: 14px;
+  margin-bottom: 20px;
 }
 
 .title span {
   color: #000;
-  font-size: 1.5rem;
+  font-size: 0.6em;
   padding-top: 10px;
+  text-align: center;
+  letter-spacing: 3px;
+}
+
+.game-container .blue, .game-container .green, .game-container .pink, .game-container .purple, .game-container .purplelight, .game-container .covered {
+  width: 20%;
+  height: 200px;
+  border: 3px solid white;
+}
+
+.game-container {
+  width: 1000px;
+  height: 400px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+
+.game-container .blue {
+  background: url("../images/blue_monster.jpg") center center/cover no-repeat;
+}
+
+.game-container .green {
+  background: url("../images/green_monster.jpg") center center/cover no-repeat;
+}
+
+.game-container .pink {
+  background: url("../images/pink_monster.jpg") center center/cover no-repeat;
+}
+
+.game-container .purple {
+  background: url("../images/purple_monster.jpg") center center/cover no-repeat;
+}
+
+.game-container .purplelight {
+  background: url("../images/purplelight_monster.jpg") center center/cover no-repeat;
+}
+
+.game-container .covered {
+  background: url("../images/cards_bg.jpg") center center/cover no-repeat;
+  border-radius: 9px;
 }
 
 /*# sourceMappingURL=maps/main.css.map */

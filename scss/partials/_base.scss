@@ -8,6 +8,10 @@
 html {
     font-size: 12px;
 }
+body {
+    font-size: 1rem;
+    min-width: 100%;
+}
 
 .game-wrapper {
     width: 80%;
@@ -22,13 +26,57 @@ html {
     flex-direction: column;
     margin: 0 auto;
     align-items: center;
-    font-size:3vw;
+    font-size: 3vmax;
     font-weight: 300;
     color: $title-color;
     text-transform: uppercase;
+    letter-spacing: 14px;
+    margin-bottom: 20px;
     span {
         color: $regularText-color;
-        font-size: 1.5rem;
+        font-size: 0.6em;
         padding-top: 10px;
+        text-align: center;
+        letter-spacing: 3px;
     } 
+}
+
+%card {
+    width: 20%;
+    height: 200px;
+    border: 3px solid white;
+}
+.game-container {
+    width: 1000px;
+    height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-self: center;
+    .blue {
+        @extend %card;
+        background: url("../images/blue_monster.jpg") center center/cover no-repeat; 
+    }
+    .green {
+        @extend %card;
+        background: url("../images/green_monster.jpg") center center/cover no-repeat;
+    }
+    .pink {
+        @extend %card;
+        background: url("../images/pink_monster.jpg") center center/cover no-repeat;
+    }
+    .purple {
+        @extend %card;
+        background: url("../images/purple_monster.jpg") center center/cover no-repeat;
+    }
+    .purplelight {
+        @extend %card;
+        background: url("../images/purplelight_monster.jpg") center center/cover no-repeat;
+    }
+    .covered {
+        @extend %card;
+        background: url("../images/cards_bg.jpg") center center/cover no-repeat;
+        border-radius: 9px;
+    }
+
 }
