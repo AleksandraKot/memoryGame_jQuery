@@ -41,14 +41,47 @@ $(document).ready(function () {
             var card =  $("<div>");
             card.addClass('card');
             card.data('image', array[i]);
+            console.log(card.data());
             card.addClass('covered');
             gameContainer.append(card);
         }
     }
     createGameBoardOfFlippedCards(reorderedCardsArray);
 
+    // Turning cards to front on click
+
+    function turnCardsToFront(elements) {
 
 
+            elements.on('click', function(e) {
+
+                var alreadyFlipedCards = $('.flipping-animation');
+
+                if (alreadyFlipedCards.length < 2) {
+                    $(this).toggleClass("flipping-animation");
+                    $(this).toggleClass("covered");
+                    $(this).addClass($(this).data('image'));
+                }
+
+                alreadyFlipedCards = $('.flipping-animation');
+                if (alreadyFlipedCards.length === 2) {
+                    hideIfTheSamePicture(alreadyFlipedCards);
+                    // continueIfDifferent(alreadyFlipedCards);
+                }
+            });
+        }
+        function hideIfTheSamePicture(elements) {
+            if (elements.first().data('image') === elements.last().data('image')) {
+                var timeout1 = setTimeout(function () {
+                    elements.first().addClass("hidden");
+                    elements.last().addClass("hidden");
+                    elements.first().removeClass("flipping-animation");
+                    elements.last().removeClass("flipping-animation");
+                }, 500);
+            }
+        }
+    
+    turnCardsToFront( $('.covered'));
 
 
 
