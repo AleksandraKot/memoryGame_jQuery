@@ -15,11 +15,13 @@ body {
 
 .game-wrapper {
     width: 80%;
+    min-width: 400px;
     height: 80vh;
+    max-width: 1236px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 10vh auto;
+    margin: 2vh auto;
 }
 .title {
     display: flex;
@@ -41,18 +43,30 @@ body {
     } 
 }
 
-%card {
-    width: 20%;
-    height: 200px;
+%card { 
+   width: 20vw;
+   height: 20vw;
+    max-width: 210px;
+    max-height: 210px;
+    min-width: 80px;
+    min-height: 80px;
     border: 3px solid white;
+    @include breakpoint (tablet) {
+        width: 15vw;
+        height: 15vw;
+    } 
 }
 .game-container {
-    width: 1000px;
-    height: 400px;
+    width: 40vw;
+    min-width: 163px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-self: center;
+    align-items: flex-start;
+    @include breakpoint (tablet) {
+        width: 100%;
+    }  
     .blue {
         @extend %card;
         background: url("../images/blue_monster.jpg") center center/cover no-repeat; 
