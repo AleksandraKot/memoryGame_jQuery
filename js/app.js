@@ -15,12 +15,9 @@ $(document).ready(function () {
             for (var i = 0; i < 2; i++) {
                 multipliedArrayOfCards.push(value);
             }
-
         });
 
-        console.log(multipliedArrayOfCards);
         return multipliedArrayOfCards;
-
     }
     // Reaordering elements of array
 
@@ -37,7 +34,7 @@ $(document).ready(function () {
 
     function createGameBoardOfFlippedCards(array) {
         for (var i = 0; i < array.length; i++) {
-            var card =  $("<div>");
+            var card = $("<div>");
             card.addClass('size');
             card.data('image', array[i]);
             console.log(card.data());
@@ -50,49 +47,70 @@ $(document).ready(function () {
     // Turning cards to front on click
 
     function turnCardsToFront(elements) {
+        
+        elements.on('click', function (e) {
 
+            var alreadyFlipedCards = $('.flipping-animation');
 
-            elements.on('click', function(e) {
-
-                var alreadyFlipedCards = $('.flipping-animation');
-
-                if (alreadyFlipedCards.length < 2) {
-                    $(this).toggleClass("flipping-animation");
-                    $(this).toggleClass("covered");
-                    $(this).addClass($(this).data('image'));
-                }
-
-                alreadyFlipedCards = $('.flipping-animation');
-                if (alreadyFlipedCards.length === 2) {
-                    hideIfTheSamePicture(alreadyFlipedCards);
-                    continueIfDifferent(alreadyFlipedCards);
-                }
-            });
-        }
-        function hideIfTheSamePicture(elements) {
-            if (elements.eq(0).data('image') === elements.eq(1).data('image')) {
-                var timeout1 = setTimeout(function () {
-                    elements.eq(0).addClass("hidden");
-                    elements.eq(1).addClass("hidden");
-                    elements.eq(0).removeClass("flipping-animation");
-                    elements.eq(1).removeClass("flipping-animation");
-                }, 500);
+            if (alreadyFlipedCards.length < 2) {
+                $(this).toggleClass("flipping-animation");
+                $(this).toggleClass("covered");
+                $(this).addClass($(this).data('image'));
             }
-        }
-        function continueIfDifferent(elements) {
-                if (elements.eq(0).data('image') !== elements.eq(1).data('image')) {
-    
-                    var timeout1 = setTimeout(function() {
-                        elements.eq(0).toggleClass("flipping-animation");
-                        elements.eq(0).addClass("covered");
-                        elements.eq(1).toggleClass("flipping-animation");
-                        elements.eq(1).addClass("covered");
-                        elements.eq(0).removeClass("flipping-animation");
-                        elements.eq(1).removeClass("flipping-animation");
-                    }, 500);
-                }
+
+            alreadyFlipedCards = $('.flipping-animation');
+            if (alreadyFlipedCards.length === 2) {
+                hideIfTheSamePicture(alreadyFlipedCards);
+                continueIfDifferent(alreadyFlipedCards);
             }
-    
+        });
+    }
+
+    function hideIfTheSamePicture(elements) {
+        if (elements.eq(0).data('image') === elements.eq(1).data('image')) {
+            var timeout1 = setTimeout(function () {
+                elements.eq(0).addClass("hidden");
+                elements.eq(1).addClass("hidden");
+                elements.eq(0).removeClass("flipping-animation");
+                elements.eq(1).removeClass("flipping-animation");
+                addRestartButtonIfFinished();
+            }, 500);
+        }
+    }
+
+    function continueIfDifferent(elements) {
+        if (elements.eq(0).data('image') !== elements.eq(1).data('image')) {
+
+            var timeout1 = setTimeout(function () {
+                elements.eq(0).toggleClass("flipping-animation");
+                elements.eq(0).addClass("covered");
+                elements.eq(1).toggleClass("flipping-animation");
+                elements.eq(1).addClass("covered");
+                elements.eq(0).removeClass("flipping-animation");
+                elements.eq(1).removeClass("flipping-animation");
+            }, 500);
+        }
+    }
+
+    function addRestartButtonIfFinished() {
+        var hiddenCards = gameContainer.find(".hidden");
+
+        if (hiddenCards.length === 10) {
+            var restartButton =  $('<div class="restart-button">Graj jeszcze raz</div>');
+            gameContainer.append(restartButton);
+            restartGame();
+        }
+    }
+
+    function restartGame() {
+        var restartButton = $(".restart-button");
+
+        restartButton.on("click", function (e) {
+            restartButton.attr('style', 'display: none;');
+            gameContainer.empty();
+            startGame();
+        });
+    }
 
     function startGame() {
         reorderedCardsArray = shuffle(createArrayOfCardsPair(arrayOfImages));
@@ -102,13 +120,5 @@ $(document).ready(function () {
     }
 
     startGame();
-
-
-
-
-
-
-
-
 
 });
