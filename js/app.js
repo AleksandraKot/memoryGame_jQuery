@@ -29,7 +29,6 @@ $(document).ready(function () {
         return arrayOfCardsInRandomOrder;
     }
 
-
     // Creating gameboard of reversed cards
 
     function createGameBoardOfFlippedCards(array) {
@@ -37,7 +36,6 @@ $(document).ready(function () {
             var card = $("<div>");
             card.addClass('size');
             card.data('image', array[i]);
-            console.log(card.data());
             card.addClass('covered');
             gameContainer.append(card);
         }
@@ -47,7 +45,7 @@ $(document).ready(function () {
     // Turning cards to front on click
 
     function turnCardsToFront(elements) {
-        
+
         elements.on('click', function (e) {
 
             var alreadyFlipedCards = $('.flipping-animation');
