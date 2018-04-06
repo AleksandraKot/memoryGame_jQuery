@@ -59,6 +59,8 @@ body {
     @include breakpoint (tablet) {
         width: 15vw;
         height: 15vw;
+        max-width: 198px;
+        max-height: 198px;
     } 
 }
 .size {
@@ -75,7 +77,7 @@ body {
     align-items: flex-start;
     @include breakpoint (tablet) {
         height: auto;
-        max-width: 100%;
+        max-width: 1175px;
     }  
     .blue {
         background: url("../images/blue_monster.jpg") center center/cover no-repeat; 

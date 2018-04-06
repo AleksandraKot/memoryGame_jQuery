@@ -85,6 +85,8 @@ body {
   .size, .game-container .green, .game-container .pink, .game-container .purple, .game-container .purplelight, .game-container .covered {
     width: 15vw;
     height: 15vw;
+    max-width: 198px;
+    max-height: 198px;
   }
 }
 
@@ -110,7 +112,7 @@ body {
 @media (min-width: 768px) {
   .game-container {
     height: auto;
-    max-width: 100%;
+    max-width: 1175px;
   }
 }
 
